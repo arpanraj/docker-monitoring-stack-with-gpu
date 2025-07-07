@@ -12,7 +12,7 @@ Get your monitoring stack up and running with one command using a Docker Compose
 - **[Alertmanager](https://github.com/prometheus/alertmanager)**: Alerting system.
 - **[Uncomplicated Alert Receiver](https://github.com/jamesread/uncomplicated-alert-receiver)**: UI with Received Alerts.
 - **[Loki](https://github.com/grafana/loki)**: Logs (including explore-logs).
-
+- **[DCGM-Exporter](https://github.com/NVIDIA/dcgm-exporter)**: GPU metrics.
 ## Makefile
 
 [Note](https://docs.docker.com/compose/install/linux/): Due to `docker-compose` and the `compose` plugin, you might have one of the two installed. I have a `Makefile` that will detect which on you have installed.
