@@ -120,6 +120,7 @@ services:
   alertmanager:
     image: prom/alertmanager:${ALERTMANAGER_VERSION:-v0.25.0}
     container_name: alertmanager
+    restart: unless-stopped
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--log.level=error'
@@ -142,6 +143,7 @@ services:
   dcgm-exporter:
     image: nvcr.io/nvidia/k8s/dcgm-exporter:4.2.3-4.1.3-ubuntu22.04
     runtime: nvidia
+    restart: unless-stopped
     privileged: true
     deploy:
       resources:
@@ -163,6 +165,7 @@ services:
   uncomplicated-alert-receiver:
     image: ghcr.io/jamesread/uncomplicated-alert-receiver
     container_name: uncomplicated-alert-receiver
+    restart: unless-stopped
     ports:
       - 9094:8080
     cpus: 0.5
@@ -176,6 +179,7 @@ services:
   redis:
     image: redis:${REDIS_VERSION:-6}
     container_name: redis
+    restart: unless-stopped
     ports:
       - 6379:6379
     cpus: 0.5
@@ -189,6 +193,7 @@ services:
   loki:
     image: grafana/loki:3.3.2
     container_name: loki
+    restart: unless-stopped
     user: root
     ports:
       - 3100:3100
@@ -207,6 +212,7 @@ services:
   promtail:
     image:  grafana/promtail:3.3.2
     container_name: promtail
+    restart: unless-stopped
     volumes:
       - ./configs/promtail/promtail.yaml:/etc/promtail/docker-config.yaml
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
